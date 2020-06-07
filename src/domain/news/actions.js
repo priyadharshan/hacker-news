@@ -5,17 +5,16 @@ import {
     GET_NEWS_ERROR,
 } from './action-types'
 
-const BASE_URL = 'https://hn.algolia.com/api/v1/search';
-const QUERY = '?tags=front_page&hitsPerPage=50';
+const BASE_URL = 'https://hn.algolia.com/api/v1/search?tags=story&page=';
 
-export const fetchNews = () => (dispatch) => {
+export const fetchNews = (pageId) => (dispatch) => {
 
     dispatch({ type: GET_NEWS_REQUESTED })
     
-    return axios.get(`${BASE_URL}${QUERY}`)
+    return axios.get(`${BASE_URL}${pageId}`)
         .then(response => {
             return dispatch({
-                payload: response.data.hits,
+                payload: response.data,
                 type: GET_NEWS_SUCCEEDED,
             })
         })

@@ -1,19 +1,42 @@
 import React, { Component } from 'react';
-import {News} from './news'
+import { Link } from 'react-router-dom';
+import { News } from './news'
 import './dashboard.css'
 
 export class Dashboard extends Component {
 
   componentDidMount() {
-    this.props.fetchNews();
+    const {
+      match,
+      fetchNews,
+    } = this.props
+
+    const pageId = match.params.pageId
+    fetchNews(pageId);
+  }
+
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.pageId !== prevProps.pageId) {
+      this.props.fetchNews(this.props.match.params.pageId);
+    }
   }
 
   render() {
-    console.log(this.props.loading)
-    console.log(this.props.news)
+    const {
+      news,
+      pageId,
+    } = this.props
+
     return (
       <div>
-      <News news={this.props.news} />
+        <News news={news} />
+        {pageId > 1 ? (
+          <Link to={'/news/' + (parseInt(pageId) - 1)}>Prev</Link>
+        ) : (
+          <p>Prev</p>
+        )}
+        <Link to={'/news/' + (parseInt(pageId) + 1)}>Next</Link>
       </div>
     );
   }

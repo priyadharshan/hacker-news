@@ -6,10 +6,11 @@ const mapStateToProps = state => ({
   news: state.news.model,
   loading: state.news.meta.loading,
   error: state.news.meta.error,
+  pageId: state.news.meta.pageId,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchNews: () => dispatch(actions.fetchNews()),
+  fetchNews: (pageId) => dispatch(actions.fetchNews(pageId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

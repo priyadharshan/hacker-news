@@ -8,8 +8,8 @@ const initialState = {
     model: [],
     meta: {
         loading: false,
-        loaded: false,
         error: null,
+        pageId: '',
     }
 };
 
@@ -20,19 +20,19 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 meta: {
                     loading: true,
-                    loaded: false,
                     error: null,
+                    pageId: '',
                 }
             };
 
         case GET_NEWS_SUCCEEDED:
             return {
                 ...state,
-                model: action.payload,
+                model: action.payload.hits,
                 meta: {
                     loading: false,
-                    loaded: true,
                     error: null,
+                    pageId: action.payload.page,
                 }
             };
 
@@ -42,8 +42,8 @@ export const reducer = (state = initialState, action) => {
                 model: [],
                 meta: {
                     loading: false,
-                    loaded: false,
                     error: action.payload,
+                    pageId: '',
                 }
             };
 

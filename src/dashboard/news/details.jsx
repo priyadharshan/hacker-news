@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import moment from 'moment';
+import { getHostname } from '../../utils'
 
 export class Details extends Component {
   render() {
@@ -15,7 +16,7 @@ export class Details extends Component {
         author,
     } = this.props
 
-    const hostname = url && (new URL(url)).hostname;
+    const hostname = getHostname(url);
     const time = createdAt && moment(createdAt).fromNow();
 
     return (
@@ -31,6 +32,5 @@ export class Details extends Component {
                 {time}</TableCell>
             </TableRow>
           )
-  
   }
 }
