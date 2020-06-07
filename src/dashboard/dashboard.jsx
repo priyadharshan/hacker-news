@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {News} from './news'
+import './dashboard.css'
 
 export class Dashboard extends Component {
 
@@ -7,8 +9,12 @@ export class Dashboard extends Component {
   }
 
   render() {
+    console.log(this.props.loading)
+    console.log(this.props.news)
     return (
-      <div>Dashboard</div>
+      <div>
+      <News news={this.props.news} />
+      </div>
     );
   }
 }

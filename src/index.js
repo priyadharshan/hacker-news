@@ -6,7 +6,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const renderApp = () => {
   const store = configureStore({});

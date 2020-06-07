@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import {
     GET_NEWS_REQUESTED,
     GET_NEWS_SUCCEEDED,
@@ -8,7 +8,7 @@ import {
 const BASE_URL = 'https://hn.algolia.com/api/v1/search';
 const QUERY = '?tags=front_page&hitsPerPage=50';
 
-export const fetchNews = (searchString = null) => (dispatch) => {
+export const fetchNews = () => (dispatch) => {
 
     dispatch({ type: GET_NEWS_REQUESTED })
     
