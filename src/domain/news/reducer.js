@@ -2,7 +2,7 @@ import {
     GET_NEWS_REQUESTED,
     GET_NEWS_SUCCEEDED,
     GET_NEWS_ERROR,
-} from './actions';
+} from './action-types';
 
 const initialState = {
     model: [],
@@ -25,26 +25,26 @@ export const reducer = (state = initialState, action) => {
                 }
             };
 
-        case GET_NEWS_ERROR:
-            return {
-                ...state,
-                model: action.payload,
-                    meta: {
-                        loading: false,
-                        loaded: true,
-                        error: null,
-                    }
-            };
-
         case GET_NEWS_SUCCEEDED:
             return {
                 ...state,
+                model: action.payload,
+                meta: {
+                    loading: false,
+                    loaded: true,
+                    error: null,
+                }
+            };
+
+        case GET_NEWS_ERROR:
+            return {
+                ...state,
                 model: [],
-                    meta: {
-                        loading: false,
-                        loaded: false,
-                        error: action.payload,
-                    }
+                meta: {
+                    loading: false,
+                    loaded: false,
+                    error: action.payload,
+                }
             };
 
         default:

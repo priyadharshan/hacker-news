@@ -12,10 +12,10 @@ export const fetchNews = (searchString = null) => (dispatch) => {
 
     dispatch({ type: GET_NEWS_REQUESTED })
     
-    return axios.get(`/${BASE_URL}${QUERY}`)
+    return axios.get(`${BASE_URL}${QUERY}`)
         .then(response => {
             return dispatch({
-                payload: response,
+                payload: response.data.hits,
                 type: GET_NEWS_SUCCEEDED,
             })
         })

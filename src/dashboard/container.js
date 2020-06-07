@@ -4,7 +4,7 @@ import { Dashboard } from './dashboard';
 
 const mapStateToProps = state => ({
   news: state.news.model,
-  isLoading: state.news.meta.isLoading,
+  loading: state.news.meta.loading,
   error: state.news.meta.error,
 });
 
