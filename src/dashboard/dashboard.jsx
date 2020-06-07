@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
 import { News } from './news'
+import { Chart } from './chart'
+import { Pagination } from './pagination'
 import './dashboard.css'
 
 export class Dashboard extends Component {
@@ -12,12 +13,11 @@ export class Dashboard extends Component {
     } = this.props
 
     const pageId = match.params.pageId
-    fetchNews(pageId);
+    fetchNews(pageId)
   }
 
   componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    if (this.props.pageId !== prevProps.pageId) {
+    if (prevProps.pageId && this.props.pageId && this.props.pageId !== prevProps.pageId) {
       this.props.fetchNews(this.props.match.params.pageId);
     }
   }
@@ -31,12 +31,8 @@ export class Dashboard extends Component {
     return (
       <div>
         <News news={news} />
-        {pageId > 1 ? (
-          <Link to={'/news/' + (parseInt(pageId) - 1)}>Prev</Link>
-        ) : (
-          <p>Prev</p>
-        )}
-        <Link to={'/news/' + (parseInt(pageId) + 1)}>Next</Link>
+        <Pagination pageId={pageId} />
+        <Chart data={news} />
       </div>
     );
   }
