@@ -15,8 +15,8 @@ export class Details extends Component {
         author,
     } = this.props
 
-    const hostname = (new URL(url)).hostname;
-    const time = moment(createdAt).fromNow();
+    const hostname = url && (new URL(url)).hostname;
+    const time = createdAt && moment(createdAt).fromNow();
 
     return (
             <TableRow key={number}>
