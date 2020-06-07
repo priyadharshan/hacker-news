@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { Dashboard } from './dashboard'
-import styles from './app.css';
+import './app.css';
 
 export function App() {
   return (
     <Router>
-      <div className={styles.app}>
-        <header className={styles.appHeader}>
+      <div className="App">
+        <header className="App-header">
         </header>
         <Switch>
           <Route

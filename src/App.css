@@ -1,8 +1,8 @@
-.app {
+.App {
   text-align: center;
 }
 
-.appHeader {
+.App-Header {
   background-color: #282c34;
   min-height: 30px;
   display: flex;
