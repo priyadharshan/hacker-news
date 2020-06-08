@@ -32,7 +32,7 @@ export const fetchNews = (pageId) => (dispatch) => {
 export function hideNews(newsId) {
     return function(dispatch, getState) {
       dispatch({
-        type: 'HIDE_NEWS',
+        type: HIDE_NEWS,
         payload: newsId,
       })
       dispatch({
@@ -45,7 +45,7 @@ export function hideNews(newsId) {
 export function upVote(newsId) {
     return function(dispatch, getState) {
       dispatch({
-        type: 'UPVOTE',
+        type: UPVOTE,
         payload: newsId,
       })
       dispatch({
