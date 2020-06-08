@@ -2,6 +2,7 @@ import {
     GET_NEWS_REQUESTED,
     GET_NEWS_SUCCEEDED,
     GET_NEWS_ERROR,
+    UPDATE_NEWS,
 } from './action-types';
 
 const initialState = {
@@ -46,6 +47,15 @@ export const reducer = (state = initialState, action) => {
                     pageId: '',
                 }
             };
+
+        case UPDATE_NEWS:
+            const newState = state.model.filter(news =>
+                news.created_at_i !== action.payload
+            );
+            return {
+                ...state,
+                model: newState,  
+            }
 
         default:
             return state;

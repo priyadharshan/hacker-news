@@ -3,6 +3,7 @@ import {
     GET_NEWS_REQUESTED,
     GET_NEWS_SUCCEEDED,
     GET_NEWS_ERROR,
+    UPDATE_NEWS,
 } from './action-types'
 
 const BASE_URL = 'https://hn.algolia.com/api/v1/search?tags=story&page=';
@@ -25,3 +26,8 @@ export const fetchNews = (pageId) => (dispatch) => {
             })
         })
 }
+
+export const updateNews = (newsId) => (dispatch) => dispatch({
+    payload: newsId,
+    type: UPDATE_NEWS,
+})

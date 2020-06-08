@@ -10,7 +10,7 @@ import './index.css';
 
 const renderApp = () => {
   const initialState = loadInitialState();
-  const store = configureStore(initialState);
+  const store = configureStore({});
 
   if (process.env.NODE_ENV !== 'production') {
     console.log('Initial state ->');

@@ -12,7 +12,6 @@ import './news.css'
 
 export class News extends Component {
   render() {
-    console.log(this.props.news)
     return (
       <TableContainer component={Paper}>
         <Table className="" aria-label="hacker news">
@@ -27,6 +26,8 @@ export class News extends Component {
                 title={row.title}
                 url={row.url}
                 author={row.author}
+                hide={row.hide}
+                hideItem={this.props.hideItem}
               />
             )}
           </TableBody>

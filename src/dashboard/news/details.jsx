@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
@@ -15,7 +16,11 @@ export const Details = (props) => {
       title,
       url,
       author,
+      hideItem,
+      hide,
     } = props
+
+    if(hide) return null
 
     const hostname = getHostname(url);
     const time = createdAt && moment(createdAt).fromNow();
@@ -29,6 +34,9 @@ export const Details = (props) => {
         <TableCell>
           <a href={url} target="_blank" rel="noopener noreferrer">{title}</a>
           <span className="details">{additionalDetails}</span>
+          <span className="comments-link">
+            <Link onClick={() => hideItem(number)}>Hide</Link>
+          </span>
         </TableCell>
       </TableRow>
     )
