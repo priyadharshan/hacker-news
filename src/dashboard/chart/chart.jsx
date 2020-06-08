@@ -1,13 +1,17 @@
 import React from 'react'
-import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line } from 'recharts'
+import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line, Label } from 'recharts'
 
 export const Chart = ({ data }) => (
-	<LineChart width={730} height={250} data={data}>
-    <CartesianGrid strokeDasharray="3 3" />
-    <XAxis dataKey="namcreated_at_ie" />
-    <YAxis dataKey="points" />
-    <Tooltip />
-    <Legend />
-    <Line type="monotone" dataKey="points" stroke="#8884d8" />
-  </LineChart>
+  <div>
+	  <LineChart width={500} height={400} data={data} margin={{ top: 50, left: 30 }}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="namcreated_at_ie">
+        <Label value="ID" offset={0} position="insideBottom" />
+      </XAxis>
+      <YAxis label={{ value: 'points', angle: -90, position: 'insideLeft' }} />
+      <Tooltip />
+      <Legend />
+      <Line type="monotone" dataKey="points" stroke="#8884d8" />
+    </LineChart>
+  </div>
 );

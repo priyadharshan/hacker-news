@@ -1,7 +1,6 @@
 .disabled {
     color: grey;
     pointer-events: none;
-    margin-right: 10px;
 }
 
 .pagination {
@@ -13,6 +12,9 @@
 }
 
 .link {
-    margin-left: 10px;
     color: #ff742b;
+}
+
+.seperator {
+    margin: 15px;
 }
