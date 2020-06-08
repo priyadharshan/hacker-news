@@ -6,7 +6,7 @@ import {
     UPVOTE,
 } from './action-types';
 
-const initialState = {
+export const initialState = {
     model: [],
     meta: {
         loading: false,
