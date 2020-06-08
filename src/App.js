@@ -12,7 +12,7 @@ export function App() {
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/:pageId" component={Dashboard} />
-          </Switch>
+        </Switch>
       </div>
     </Router>
   );

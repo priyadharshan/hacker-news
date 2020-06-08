@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hacker News
 
 ## Available Scripts
 
@@ -6,53 +6,81 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project and folder structure
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
+app/
+  public/
+  src/
+    components/ <!-- components for features/ sub features -->
+      loader/
+        loader.jsx
+        index.js
+    dashboard/  <!-- features -->
+      chart/    <!-- sub features -->
+      news/
+        details.jsx
+        header.jsx
+        news.jsx
+      pagination/
+      container.js
+      dashboard.jsx
+      index.js
+    domain/  <!-- service calls and reducers -->
+    store/   <!-- redux middleware and local storage -->
+    utils/
+```
+### Details
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1) Used named export
+  It helps better tree shaking and it helps in compile time errors and easy for refactoring
 
-## Learn More
+2) use kebab case for all files and folders.
+   casing files based on the casing of classes and functions name results in an insconsist file naming structure.
+   we can gain consistency by choosing a single casing and using it across all files and folders.
+   Reason for kebab case : Windows is not case sensitive but linux is.. we can avoid build errors due to casing...
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3) Avoid redundant imports..
+   ie exported only the necessary functions..avoid unnecessary lines of code and also helps in better tree shaking
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4) colocated files/ grouping by functions / ducks approach
+  Grouping componnets, unit tests, css, container and its sub features is much more maintanable them in different seperate folders/places
+  so that we can easily understand what a module and feature consists of..
+  (high cohesion & low coupling)
+   
+5) one render function per component (Singular responsibility)
+   Functions should do one one thing.
 
-### Code Splitting
+6) Container and presentaional components ( Dashboard - View, container.js - redux connect)
+   view layer should not concern about redux connect - Just presentatonal layer
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+7) Selectors
+   Used selectors for accessing redux state. so that we can avoid changes in the components if any change in the api structure. we can just change the path in the selectors based on api structure..
 
-### Analyzing the Bundle Size
+8) Do more in action  creators and less in reducers..
+  all the mapping and dispatch/adapters in actions.. maintainer simple reducer so that, it is easy to read. this will also helps in svc versioning.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+9) Reactive redux actions..
+   Used same reducer even for updating votes, hide (many to many mapping)
 
-### Making a Progressive Web App
+10) Redux state (seperation of concerns)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```
+meta: {
+    loading: false,
+    error: null
+},
+model: [
+    .. news collections
+]
+```
+having meta/model for redux state helps in seperation of errors, loading, loaded property from data model.
 
-### Advanced Configuration
+11) Domain folder ( API )
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Decouples views from application.. and it is the conceptual representation of what the application is about.(ie entity relationship model)
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
