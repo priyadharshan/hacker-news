@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import './pagination.css'
 
-export const Pagination = ({ pageId }) => {
+export const Pagination = memo(({ pageId }) => {
   return (
     <div className="pagination">
       { 
@@ -14,4 +14,4 @@ export const Pagination = ({ pageId }) => {
       <Link className="link" to={'/news/' + (parseInt(pageId) + 1)}>Next</Link>
     </div>
   )
-}
+})

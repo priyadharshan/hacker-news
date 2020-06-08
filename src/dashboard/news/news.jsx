@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { memo } from 'react';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,14 +10,12 @@ import { Details } from './details'
 
 import './news.css'
 
-export class News extends Component {
-  render() {
-    return (
+export const News = memo((props) => (
       <TableContainer component={Paper}>
         <Table className="" aria-label="hacker news">
           <Header />
           <TableBody>
-            {this.props.news.map((row) => 
+            {props.news.map((row) => 
               <Details
                 number={row.created_at_i}
                 createdAt={row.created_at}
@@ -26,13 +24,11 @@ export class News extends Component {
                 title={row.title}
                 url={row.url}
                 author={row.author}
-                hide={row.hide}
-                hideItem={this.props.hideItem}
+                hideItem={props.hideItem}
+                upVote={props.upVote}
               />
             )}
           </TableBody>
         </Table>
       </TableContainer>
-    );
-  }
-}
+))

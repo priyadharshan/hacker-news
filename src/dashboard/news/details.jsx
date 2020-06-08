@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -7,7 +7,7 @@ import moment from 'moment';
 import { getHostname } from '../../utils'
 import './news.css'
 
-export const Details = (props) => {
+export const Details = memo((props) => {
     const {
       number,
       createdAt,
@@ -17,10 +17,8 @@ export const Details = (props) => {
       url,
       author,
       hideItem,
-      hide,
+      upVote,
     } = props
-
-    if(hide) return null
 
     const hostname = getHostname(url);
     const time = createdAt && moment(createdAt).fromNow();
@@ -30,7 +28,11 @@ export const Details = (props) => {
       <TableRow key={number} className="row">
         <TableCell>{comments}</TableCell>
         <TableCell>{votes}</TableCell>
-        <TableCell><ArrowDropUpIcon /></TableCell>
+        <TableCell>
+          <div onClick={() => upVote(number)}>
+            <ArrowDropUpIcon />
+          </div>
+        </TableCell>
         <TableCell>
           <a href={url} target="_blank" rel="noopener noreferrer">{title}</a>
           <span className="details">{additionalDetails}</span>
@@ -40,4 +42,4 @@ export const Details = (props) => {
         </TableCell>
       </TableRow>
     )
-}
+})

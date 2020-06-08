@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line, Label } from 'recharts'
 
-export const Chart = ({ data }) => (
+export const Chart = memo(({ data }) => (
   <div>
 	  <LineChart width={500} height={400} data={data} margin={{ top: 50, left: 30 }}>
       <CartesianGrid strokeDasharray="3 3" />
@@ -14,4 +14,4 @@ export const Chart = ({ data }) => (
       <Line type="monotone" dataKey="points" stroke="#8884d8" />
     </LineChart>
   </div>
-);
+))

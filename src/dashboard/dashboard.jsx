@@ -11,6 +11,10 @@ export class Dashboard extends Component {
     this.props.updateNews(newsId)
   }
 
+  upVote = (newsId) => {
+    this.props.updateNews(newsId)
+  }
+
   componentDidMount() {
     const { match, fetchNews } = this.props
     const pageId = match.params.pageId
@@ -31,13 +35,12 @@ export class Dashboard extends Component {
 
   render() {
     const { news, pageId, loading } = this.props
-    console.log(news)
 
     return (
       <div>
         { loading ? <Loader loading={loading} /> :
           <div>
-            <News news={news} hideItem={this.hideItem} />
+            <News news={news} hideItem={this.hideItem} upVote={this.upVote} />
             <Pagination pageId={pageId} />
             <Chart data={news} />
           </div>
