@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Loader } from '../components/loader'
 import { News } from './news'
 import { Chart } from './chart'
@@ -50,4 +51,12 @@ export class Dashboard extends Component {
       </div>
     );
   }
+}
+
+Dashboard.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  fetchNews: PropTypes.func.isRequired,
+  hideNews: PropTypes.func.isRequired,
+  upVote: PropTypes.func.isRequired,
+  news: PropTypes.array
 }

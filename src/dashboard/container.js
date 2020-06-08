@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
-import { actions } from '../domain/news';
+import { actions,selectors } from '../domain/news';
 import { Dashboard } from './dashboard';
 
 const mapStateToProps = state => ({
-  news: state.news.model,
-  loading: state.news.meta.loading,
-  error: state.news.meta.error,
-  pageId: state.news.meta.pageId,
+  news: selectors.model(state),
+  loading: selectors.loading(state),
+  pageId: selectors.pageId(state),
 });
 
 const mapDispatchToProps = dispatch => ({
