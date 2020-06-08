@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Dashboard } from './dashboard'
 import './App.css';
 
@@ -10,12 +10,8 @@ export function App() {
         <header className="App-header">
         </header>
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => <Redirect to="/news/1" /> }
-          />
-          <Route exact path="/news/:pageId" component={Dashboard} />
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/:pageId" component={Dashboard} />
           </Switch>
       </div>
     </Router>

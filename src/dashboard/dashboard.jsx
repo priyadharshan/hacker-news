@@ -16,9 +16,11 @@ export class Dashboard extends Component {
   }
 
   componentDidMount() {
-    const { match, fetchNews } = this.props
-    const pageId = match.params.pageId
-    fetchNews(pageId)
+    const { fetchNews, pageId } = this.props
+    if(!pageId) {
+      const defaultId = "1"
+      fetchNews(defaultId)
+    }
   }
 
   componentDidUpdate() {
@@ -26,7 +28,7 @@ export class Dashboard extends Component {
     const newsPageId =  parseInt(pageId)
     const routingId = parseInt(match.params.pageId)
 
-    const canFetchNews = newsPageId && routingId !== newsPageId
+    const canFetchNews = newsPageId && routingId && routingId !== newsPageId
 
     if (canFetchNews) {
       fetchNews(this.props.match.params.pageId);
