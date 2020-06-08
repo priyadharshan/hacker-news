@@ -15,11 +15,11 @@ export class News extends Component {
     console.log(this.props.news)
     return (
       <TableContainer component={Paper}>
-      <Table className="" aria-label="hacker news">
-      <Header />
-        <TableBody>
-          {this.props.news.map((row) => 
-            <Details
+        <Table className="" aria-label="hacker news">
+          <Header />
+          <TableBody>
+            {this.props.news.map((row) => 
+              <Details
                 number={row.created_at_i}
                 createdAt={row.created_at}
                 comments={row.num_comments}
@@ -27,11 +27,11 @@ export class News extends Component {
                 title={row.title}
                 url={row.url}
                 author={row.author}
-            />
+              />
             )}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableBody>
+        </Table>
+      </TableContainer>
     );
   }
 }

@@ -1,0 +1,18 @@
+.disabled {
+    color: grey;
+    pointer-events: none;
+    margin-right: 10px;
+}
+
+.pagination {
+    padding: 20px;
+    text-align: right;
+    align-items: center;
+    justify-content: right;
+    border-bottom: 2px solid #ff742b;
+}
+
+.link {
+    margin-left: 10px;
+    color: #ff742b;
+}

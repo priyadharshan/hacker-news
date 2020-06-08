@@ -3,8 +3,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
+import './news.css'
+
 export const Header = () => (
-    <TableHead>
+  <TableHead className="header">
     <TableRow>
       <TableCell>Comments</TableCell>
       <TableCell>Vote Count</TableCell>

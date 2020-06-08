@@ -1,0 +1,11 @@
+.details {
+  color: grey;
+}
+
+.header {
+  background: #ff742b;
+}
+
+.row:nth-child(even) {
+  background: #f6f6ef;
+}

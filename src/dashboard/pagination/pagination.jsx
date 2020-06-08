@@ -1,11 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './pagination.css'
 
 export const Pagination = ({ pageId }) => {
-    return (
-        <div>
-          { pageId > 1 ? <Link to={'/news/' + (parseInt(pageId) - 1)}>Prev</Link> : <p>Prev</p> }
-          <Link to={'/news/' + (parseInt(pageId) + 1)}>Next</Link>
-        </div>
-    )
+  return (
+    <div className="pagination">
+      { 
+        pageId > 1 ? 
+          <Link className="link" to={'/news/' + (parseInt(pageId) - 1)}>Prev</Link> :
+          <Link className="disabled">Prev</Link>
+      }
+      |
+      <Link className="link" to={'/news/' + (parseInt(pageId) + 1)}>Next</Link>
+    </div>
+  )
 }
