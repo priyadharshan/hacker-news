@@ -3,3 +3,6 @@ export const GET_NEWS_SUCCEEDED = 'GET_NEWS_SUCCEEDED'
 export const GET_NEWS_ERROR = 'GET_NEWS_ERROR'
 
 export const UPDATE_NEWS = 'UPDATE_NEWS'
+
+export const UPVOTE = 'UPVOTE'
+export const HIDE_NEWS = 'HIDE_NEWS'

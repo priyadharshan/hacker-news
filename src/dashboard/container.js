@@ -11,7 +11,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchNews: (pageId) => dispatch(actions.fetchNews(pageId)),
-  updateNews: (newsId) => dispatch(actions.updateNews(newsId)),
+  hideNews: (newsId) => dispatch(actions.hideNews(newsId)),
+  upVote: (newsId) => dispatch(actions.upVote(newsId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

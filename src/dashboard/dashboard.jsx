@@ -8,11 +8,11 @@ import './dashboard.css'
 export class Dashboard extends Component {
 
   hideItem = (newsId) => {
-    this.props.updateNews(newsId)
+    this.props.hideNews(newsId)
   }
 
   upVote = (newsId) => {
-    this.props.updateNews(newsId)
+    this.props.upVote(newsId)
   }
 
   componentDidMount() {

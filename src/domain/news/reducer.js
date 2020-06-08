@@ -2,7 +2,8 @@ import {
     GET_NEWS_REQUESTED,
     GET_NEWS_SUCCEEDED,
     GET_NEWS_ERROR,
-    UPDATE_NEWS,
+    HIDE_NEWS,
+    UPVOTE,
 } from './action-types';
 
 const initialState = {
@@ -48,13 +49,24 @@ export const reducer = (state = initialState, action) => {
                 }
             };
 
-        case UPDATE_NEWS:
-            const newState = state.model.filter(news =>
+        case HIDE_NEWS:
+            const filteredModel = state.model.filter(news =>
                 news.created_at_i !== action.payload
             );
             return {
                 ...state,
-                model: newState,  
+                model: filteredModel,  
+            }
+
+        case UPVOTE:
+            const updatedModel = state.model.map(news => {
+                const points = news.points + 1
+                const updatedVote = { ...news, points }
+                return news.created_at_i === action.payload ? updatedVote : news
+            })
+            return {
+                ...state,
+                model: updatedModel,  
             }
 
         default:
