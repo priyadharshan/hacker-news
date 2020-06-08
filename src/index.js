@@ -9,13 +9,8 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 
 const renderApp = () => {
-  const initialState = loadInitialState();
-  const store = configureStore({});
-
-  if (process.env.NODE_ENV !== 'production') {
-    console.log('Initial state ->');
-    console.log(store.getState());
-  }
+  const initialState = loadInitialState()
+  const store = configureStore(initialState)
 
   ReactDOM.render(
     <Provider store={store}>

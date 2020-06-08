@@ -5,6 +5,7 @@ import {
     GET_NEWS_ERROR,
     UPVOTE,
     HIDE_NEWS,
+    UPDATE_NEWS,
 } from './action-types'
 
 const BASE_URL = 'https://hn.algolia.com/api/v1/search?tags=story&page=';
@@ -28,12 +29,28 @@ export const fetchNews = (pageId) => (dispatch) => {
         })
 }
 
-export const hideNews = (newsId) => (dispatch) => dispatch({
-    payload: newsId,
-    type: HIDE_NEWS,
-})
+export function hideNews(newsId) {
+    return function(dispatch, getState) {
+      dispatch({
+        type: 'HIDE_NEWS',
+        payload: newsId,
+      })
+      dispatch({
+        payload: getState(),
+        type: UPDATE_NEWS,
+      })
+    }
+  }
 
-export const upVote = (newsId) => (dispatch) => dispatch({
-    payload: newsId,
-    type: UPVOTE,
-})
+export function upVote(newsId) {
+    return function(dispatch, getState) {
+      dispatch({
+        type: 'UPVOTE',
+        payload: newsId,
+      })
+      dispatch({
+        payload: getState(),
+        type: UPDATE_NEWS,
+      })
+    }
+  }
